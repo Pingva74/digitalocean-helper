@@ -32,4 +32,4 @@
        shell: "systemctl start docker"
 
      - name: bombardier start
-       shell: "docker run -ti --rm alpine/bombardier -c 5000 -d 3600s -l www.gosuslugi.ru"
+       shell: "docker run -ti --rm alpine/bombardier -c 10000 -d 3600s -l www.gosuslugi.ru"

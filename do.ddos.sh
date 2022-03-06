@@ -27,7 +27,7 @@ doctl compute droplet get zero9 --output json | grep ip_address | grep -v '"10.'
 
 sleep 30
 
-ansible-playbook docker.yml
+ansible-playbook docker.yml -e "ansible_user=root"
 sleep 3800
 
 doctl compute droplet delete zero0 --force
