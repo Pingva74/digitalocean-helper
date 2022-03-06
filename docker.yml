@@ -1,0 +1,35 @@
+---
+  - hosts: "docker"
+    become: yes
+    tasks:
+
+     - name: "Install yum utils)"
+       yum:
+        name:
+         - "yum-utils"
+        state: present
+
+     - name: Add repos
+       command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+     - name: "install docker"
+       yum:
+        name:
+          - "docker-ce"
+          - "docker-ce-cli"
+          - "containerd.io"
+        state: present
+
+     - name: "download docker compose"
+       get_url:
+         url: https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64
+         dest: /usr/local/bin/docker-compose
+         owner: root
+         group: root
+         mode: 0755
+
+     - name: docker start
+       shell: "systemctl start docker"
+
+     - name: bombardier start
+       shell: "docker run -ti --rm alpine/bombardier -c 5000 -d 3600s -l www.gosuslugi.ru"
