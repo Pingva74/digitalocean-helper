@@ -20,28 +20,47 @@ doctl compute region list
 отримаете приблизно такий перелік:
 
 doctl compute region list
+
 Slug    Name               Available
+
 nyc1    New York 1         true
+
 sfo1    San Francisco 1    false
+
 nyc2    New York 2         false
+
 ams2    Amsterdam 2        false
+
 sgp1    Singapore 1        true
+
 lon1    London 1           true
+
 nyc3    New York 3         true
+
 ams3    Amsterdam 3        true
+
 fra1    Frankfurt 1        true
+
 tor1    Toronto 1          true
+
 sfo2    San Francisco 2    false
+
 blr1    Bangalore 1        true
+
 sfo3    San Francisco 3    true
+
 
 --ssh-keys 30188579 - ключ доступу до дроплета, отримати перелік ключів можна так: doctl compute ssh-key list
 отримаемо схожу відповідь:
 
 doctl compute ssh-key list
+
 ID          Name        FingerPrint
+
 30245974    oracle      73:dd:87:ed:05:40:58:26:25:1d:7d:b2:b0:5f:ab:1e
+
 30188579    home        44:10:69:cd:39:cd:ac:01:04:92:a0:78:37:77:29:9b
+
 
 Нам треба вказати --ssh-keys <ID> Вашого ключа, вони індивідуальні.
 zero0 - це ім'я дроплету.
